@@ -37,7 +37,7 @@ const multerFilter = (req, file, cb) => {
 const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
 
 exports.uploadUserPhoto = upload.single('photo');
-exports.resizeUserPhoto = (req, res, next) => {
+exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   // console.log(req.file);
 
   /* since we decided to save the image to memory instead of writing it to 
@@ -49,7 +49,7 @@ exports.resizeUserPhoto = (req, res, next) => {
   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
 
   // Image processing, resizing,formatting,quality,storing
-  sharp(req.file.buffer)
+  await sharp(req.file.buffer)
     .resize(500, 500)
     .toFormat('jpeg')
     .jpeg({ quality: 90 })
@@ -57,7 +57,7 @@ exports.resizeUserPhoto = (req, res, next) => {
 
   console.log(req.file);
   next();
-};
+});
 exports.getAllUsers = getAll(User);
 exports.getUser = getOne(User);
 exports.updateUser = updateOne(User);
