@@ -29,18 +29,24 @@ if (formUpdateData) {
   });
 }
 if (formUserPassword) {
-  formUserPassword.addEventListener('submit', (e) => {
+  formUserPassword.addEventListener('submit', async (e) => {
     e.preventDefault();
+    document.querySelector('.btn-save-password').textContent = 'Updating.....';
     const currentPassword = document.getElementById('password-current').value;
     const updatePassword = document.getElementById('password').value;
     const updatePasswordConfirm =
       document.getElementById('password-confirm').value;
 
     // console.log(passwordConfirm, password, passwordConfirm);
-    updateSettings(
+    await updateSettings(
       { currentPassword, updatePassword, updatePasswordConfirm },
       'password',
     );
+    document.querySelector('.btn-save-password').textContent = 'save password';
+    // clear fields after updating settings
+    document.getElementById('password-current').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('password-confirm').value = '';
   });
 }
 
