@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('./../controllers/userController');
 const authController = require('./../controllers/authController');
+
 const {
   getAllUsers,
   getUser,
@@ -12,6 +13,8 @@ const {
   deleteMe,
   aboutMe,
   setUserId,
+  uploadUserPhoto,
+  resizeUserPhoto
 } = userController;
 
 const {
@@ -33,7 +36,7 @@ router.route('/resetPassword/:token').patch(resetPassword);
 // AUTHORIZATION
 router.use(protect);
 router.route('/updatePassword').patch(updatePassword);
-router.route('/updateMe').patch(updateMe);
+router.route('/updateMe').patch(uploadUserPhoto,resizeUserPhoto , updateMe);
 router.route('/deleteMe').delete(deleteMe);
 router.route('/me').get(setUserId, aboutMe);
 // all routes after this middleware can only be used by admin

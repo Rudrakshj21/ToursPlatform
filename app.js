@@ -87,7 +87,7 @@ app.use(
 // ROUTES
 // test middleware
 app.use((req, res, next) => {
-  console.log('cookie');
+  // console.log('cookie');
   // console.log(req.cookies);
   next();
 });
