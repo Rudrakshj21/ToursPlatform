@@ -11,9 +11,18 @@ module.exports = class Email {
 
   newTransport() {
     if (process.env.NODE_ENV == 'production') {
-      // send mail using sendGrid service
-      return 1;
+      // send mail using elastic email service
+
+      return nodemailer.createTransport({
+        host: process.env.EMAIL_PROD_HOST,
+        port: process.env.EMAIL_PROD_PORT,
+        auth: {
+          user: process.env.EMAIL_PROD_USERNAME,
+          pass: process.env.EMAIL_PROD_PASSWORD,
+        },
+      });
     }
+    // development mail trap
     return nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: process.env.EMAIL_PORT,
@@ -41,7 +50,7 @@ module.exports = class Email {
       to: this.to,
       subject,
       html,
-      text: htmlToText.fromString(html),
+      text: htmlToText.convert(html),
     };
     // 3) create transport and send email
     await this.newTransport().sendMail(mailOptions);
@@ -53,10 +62,13 @@ module.exports = class Email {
       'Welcome the platform hope you have a good time 😀',
     );
   }
+  async sendResetPassword() {
+    await this.send(
+      'passwordReset',
+      'Your password reset token (valid for only 10 min)',
+    );
+  }
 };
-
-
-
 
 // reference
 // const sendEmail = async (options) => {

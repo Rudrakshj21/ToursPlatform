@@ -2,8 +2,7 @@ const Tour = require('./../models/tourModel');
 const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
-const jwt = require('jsonwebtoken');
-const { promisify } = require('util');
+
 exports.getOverview = catchAsync(async (req, res, next) => {
   // 1 get tour data from collection
   const tours = await Tour.find();
