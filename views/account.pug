@@ -15,13 +15,13 @@ block content
           +navItem('#','My reviews', 'star', false)
           +navItem('#','Billing', 'credit-card', false)
         -if (user.role === 'admin')
-        .admin-nav
-          h5.admin-nav__heading Admin
-          ul.side-nav
-            +navItem("#",'Manage tours','map',false)
-            +navItem("#",'Manage users','users',false)
-            +navItem("#",'Manage reviews','star',false)
-            +navItem("#",'Manage Bookings','briefcase',false)
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem("#",'Manage tours','map',false)
+              +navItem("#",'Manage users','users',false)
+              +navItem("#",'Manage reviews','star',false)
+              +navItem("#",'Manage Bookings','briefcase',false)
       .user-view__content
         .user-view__form-container
           h2.heading-secondary.ma-bt-md Your account settings
