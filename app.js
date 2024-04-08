@@ -7,15 +7,17 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
-
+const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
-const app = express();
+const bookingRouter = require('./routes/bookingRoutes');
 
+const app = express();
+app.use(cors());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 // 1 GLOBAL MIDDLEWARES
@@ -27,13 +29,18 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        'script-src': ["'self'", 'https://unpkg.com', ''],
+        'script-src': [
+          "'self'",
+          'https://unpkg.com',
+          'https://js.stripe.com/v3/',
+        ],
         'img-src': [
           "'self'",
           'https://tile.openstreetmap.org',
           'https://unpkg.com',
         ],
-        'connect-src': ["'self'", 'ws://localhost:*', 'ws://localhost:55790/'],
+        'connect-src': ["'self'", 'ws://localhost:*', 'http://127.0.0.1:3000'],
+        'frame-src': ["'self'", 'https://js.stripe.com'],
       },
     },
   }),
@@ -98,7 +105,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
-
+app.use('/api/v1/bookings', bookingRouter);
 // if we have reached here it means request response cycle is not completed yet
 // means no route matched the requested url
 // all routes which did not match

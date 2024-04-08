@@ -40,7 +40,7 @@ exports.getLoginForm = catchAsync(async (req, res, next) => {
 });
 
 exports.getUserAccount = catchAsync(async (req, res, next) => {
-  res.status(200).render('account');
+  res.status(200).render('account',{title : req.user.name});
 });
 
 exports.updateUserData = catchAsync(async (req, res, next) => {

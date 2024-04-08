@@ -1,11 +1,13 @@
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
+import { bookTour } from './stripe';
 // DOM
 const form = document.querySelector('.form--login');
 const logoutBtn = document.getElementById('logout');
 const formUpdateData = document.querySelector('.form-user-data');
 const formUserPassword = document.querySelector('.form-user-password');
 // console.log(formUpdateData);
+const bookTourBtn = document.getElementById('book-tour');
 // VALUES
 
 if (form) {
@@ -55,4 +57,12 @@ if (formUserPassword) {
 
 if (logoutBtn) {
   logoutBtn.addEventListener('click', logout);
+}
+
+if(bookTourBtn){
+  bookTourBtn.addEventListener('click',(e)=>{
+    e.target.textContent = 'Processing...';
+    const {tourId} = e.target.dataset
+    bookTour(tourId);
+  })
 }
