@@ -47,6 +47,6 @@ To view the tours you have booked, click on your account icon and then select "M
 
 For API testing, you can access the Postman collection [here](https://www.postman.com/descent-module-architect-20952764/workspace/tourplatform-rudraksh/collection/31221845-668a155f-af43-4f16-9d33-63ae13785a46?action=share&creator=31221845).
 
-Please note that while several frontend features like signup and admin CRUD operations are not yet implemented, the backend API encompasses essential functionalities such as CRUD operations for tours, users, bookings, and reviews. Additionally, features like preventing duplicate reviews, authentication, filtering, pagination, rate limiting, and more are incorporated into the backend API, aligning with the primary goal of the project.
+Please note that while several frontend features like signup and admin CRUD operations are not yet implemented on frontend as this project mainly focuses on developing REST API, the backend API encompasses essential functionalities such as CRUD operations for tours, users, bookings, and reviews. Additionally, features like preventing duplicate reviews, authentication, filtering, pagination, rate limiting, and more are incorporated into the backend API, aligning with the primary goal of the project.
 
 
