@@ -33,7 +33,7 @@ Certainly! Here's how you can incorporate the link into the README:
 For testing purposes, you can use the preexisting account with the following credentials:
 
 - **Username:** rud@gmail.com
-- **Password:** pass1234
+- **Password:** test1234
 
 After logging in with the provided credentials, ensure to navigate to any tour detail page and click on the "Book Tour" button. This action will direct you to the Stripe payment checkout. For testing purposes, you can use the following dummy card details:
 
