@@ -7,7 +7,7 @@ dotenv.config({
 // must be before any synchronous code
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION 🔥 Shutting down....');
-  console.log(err.name, err.message);
+  // console.log(err.name, err.message);
   // must always be exited (unclean state)
   process.exit(1);
 });
@@ -19,7 +19,7 @@ const DB = process.env.DATABASE.replace(
 );
 mongoose.connect(DB).then((con) => {
   // console.log(con.connections);
-  console.log('DB connection successfully ✅');
+  // console.log('DB connection successfully ✅');
 });
 
 const port = process.env.PORT || 8000;
@@ -28,7 +28,7 @@ const server = app.listen(port, () => {
 });
 // globally handling all unhandled promise rejections (all asynchronous )
 process.on('unhandledRejection', (err) => {
-  console.log(err.name, err.message);
+  // console.log(err.name, err.message);
   console.log('UNHANDLED REJECTION 🔥 Shutting down....');
 
   // abruptly handling

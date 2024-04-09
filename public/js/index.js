@@ -28,7 +28,7 @@ if (formUpdateData) {
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
 
-    console.log('form update', form.entries());
+    // console.log('form update', form.entries());
 
     updateSettings(form, 'data');
   });

@@ -49,7 +49,7 @@ app.use(
 
 // Development Logger
 if (process.env.NODE_ENV === 'development') {
-  console.log('in development mode');
+  // console.log('in development mode');
   // logger
   app.use(morgan('dev'));
 }
