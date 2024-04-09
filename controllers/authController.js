@@ -19,10 +19,13 @@ const createAndSendToken = (user, statusCode, res) => {
     // browser can only send and store and not modify
     httpOnly: true,
   };
-  if (process.env.NODE_ENV === 'production') {
-    // only https encrypted connection
-    cookieOptions.secure = true;
-  }
+  // on https the property secure is set to req
+  if(req.secure) cookieOptions.secure = true;
+
+  // if (process.env.NODE_ENV === 'production') {
+  //   // only https encrypted connection
+  //   cookieOptions.secure = true;
+  // }
 
   res.cookie('jwt', token, cookieOptions);
   // console.log('before cookie')
