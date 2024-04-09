@@ -19,7 +19,6 @@ const bookingRouter = require('./routes/bookingRoutes');
 
 const app = express();
 app.enable('trust proxy');
-app.use(cors());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 // 1 GLOBAL MIDDLEWARES
@@ -48,6 +47,15 @@ app.use(
   }),
 );
 
+app.use(cors());
+/*implement cross origin resource sharing which sets some headers such as Allow-Cross-Origin *(all routes) but this only works
+for simple requests such as get and post for other requests like delete, put, patch or requests which send cookies or non standard headers these are called
+non-simple requests . These requests require so called pre flight phase which is initiated by browser where it sends a options request to check
+if the request is safe to send or not and we (server) have to respond to this options request and allow cors so browser understands that yes it 
+can now send that non-simple request to the server
+*/
+app.options('*', cors());
+// app.options('/api/v1/tours/:id',cors()) // for a specific route only to enable preflight phase
 // Development Logger
 if (process.env.NODE_ENV === 'development') {
   // console.log('in development mode');
