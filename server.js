@@ -11,7 +11,7 @@ process.on('uncaughtException', (err) => {
   // must always be exited (unclean state)
   process.exit(1);
 });
-const app = require('./index.js');
+const app = require('./app');
 
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
