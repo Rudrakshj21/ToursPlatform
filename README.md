@@ -1,6 +1,6 @@
 **Tourism and Travel API**
 
-This is Tourism and Travel API, designed to provide comprehensive data and functionalities for tourism and booking platforms. The API offers advanced features to streamline your development process and enhance user experience. Below are the key features and technologies utilized to ensure professionalism and efficiency:
+This is Tourism and Travel REST API, designed to provide comprehensive data and functionalities for tourism and booking platforms. The API offers advanced features to streamline your development process and enhance user experience. Below are the key features and technologies utilized to ensure professionalism and efficiency:
 
 **Features:**
 
